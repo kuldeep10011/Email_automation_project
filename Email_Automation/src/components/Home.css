@@ -1,0 +1,124 @@
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar-left {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Navbar Right Section */
+.navbar-right {
+    display: flex;
+    gap:40px;
+    margin-right: 20px;
+}
+
+.navbar-right button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.navbar-right button:hover {
+    background-color: #555;
+}
+
+/* Main Content Section */
+.main-content {
+    display: flex;
+    height: calc(100vh - 60px);
+    /* Full height minus navbar height */
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+/* About Us Section (Left Side) */
+.about-us {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    color: #333;
+}
+
+.about-us h2 {
+    font-size: 46px;
+    margin-bottom: 20px;
+    /* text-align: center; */
+}
+
+.about-us p {
+    font-size: 30px;
+    color: #555;
+    line-height: 1.6;
+    /* text-align: center; */
+}
+
+.csv-upload {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    align-items: flex-start;
+}
+
+.csv-upload input {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 50%;
+    max-width: 300px;
+}
+
+.submit-button {
+    width: auto;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.submit-button:disabled {
+    background-color: #a1d99b;
+    cursor: not-allowed;
+}
+
+.submit-button:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+/* Image Section (Right Side) */
+.image-section {
+    flex: 1;
+    height: 85%;
+    /* Full height */
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.image-section img {
+    width: 100%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 10px;
+}
