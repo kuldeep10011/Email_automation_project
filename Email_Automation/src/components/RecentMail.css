@@ -1,4 +1,79 @@
-/* Navbar Styles (Same as Home.css) */
+.recent-mail-container {
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.csv-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+
+.csv-table th,
+.csv-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.csv-table th {
+    background-color: #FF834E;
+    color: white;
+}
+
+.csv-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.csv-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+.recent-mail-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.csv-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+
+.csv-table th,
+.csv-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.csv-table th {
+    background-color: #FF834E;
+    color: white;
+}
+
+.csv-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.csv-table tr:hover {
+    background-color: #f1f1f1;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -15,13 +90,15 @@
     font-weight: bold;
 }
 
+/* Navbar Right Section */
 .navbar-right {
     display: flex;
-    gap: 15px;
+    gap:40px;
+    margin-right: 20px;
 }
 
 .navbar-right button {
-    background-color: #444;
+    background-color: #FF834E;
     color: white;
     border: none;
     padding: 8px 16px;
@@ -33,46 +110,4 @@
 
 .navbar-right button:hover {
     background-color: #555;
-}
-
-/* Main Content */
-.recent-mails-content {
-    padding: 40px;
-    text-align: center;
-}
-
-.recent-mails-content h1 {
-    font-size: 36px;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.email-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.email-item {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin: 10px auto;
-    border-radius: 8px;
-    text-align: left;
-    max-width: 600px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.email-item h3 {
-    margin-bottom: 10px;
-    color: #555;
-}
-
-.email-item p {
-    margin: 5px 0;
-    color: #666;
-}
-
-.email-item strong {
-    color: #333;
 }

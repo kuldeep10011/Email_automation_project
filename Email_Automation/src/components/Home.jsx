@@ -7,6 +7,9 @@ import "./Home.css";
 const Home = () => {
   const [csvData, setCsvData] = useState([]);
   const [fileSelected, setFileSelected] = useState(false); // Track if a file is selected
+  const [loading, setLoading] = useState(false); // Track loading state
+  const [modalMessage, setModalMessage] = useState(""); // Message for the modal
+  const [showModal, setShowModal] = useState(false); // Track modal visibility
   const navigate = useNavigate();
 
   const handleFileUpload = (event) => {
@@ -17,24 +20,49 @@ const Home = () => {
         header: true,
         complete: (results) => {
           setCsvData(results.data);
-          console.log("CSV Data:", results.data);
+          localStorage.setItem("recentCsvData", JSON.stringify(results.data)); // Save data to localStorage
         },
         error: (error) => {
           console.error("Error reading CSV:", error);
         },
       });
     } else {
-      alert("Please upload a valid CSV file.");
+      setModalMessage("Please upload a valid CSV file.");
+      setShowModal(true); // Show error in the modal
       setFileSelected(false); // Disable submit button if file is invalid
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (csvData.length > 0) {
-      alert("CSV imported successfully!");
-      setFileSelected(false); // Reset file selection after submission
+      setLoading(true); // Show loading animation
+      try {
+        const response = await fetch("http://localhost:5000/send-emails", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ data: csvData }),
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+          setModalMessage(result.message);
+        } else {
+          setModalMessage(`Error: ${result.message}`);
+        }
+      } catch (error) {
+        console.error("Error sending emails:", error);
+        setModalMessage(
+          "Failed to send emails. Check the console for more details."
+        );
+      } finally {
+        setLoading(false); // Hide loading animation
+        setShowModal(true); // Show the modal
+      }
     } else {
-      alert("Please upload a CSV file first.");
+      setModalMessage("Please upload a CSV file first.");
+      setShowModal(true); // Show warning in the modal
     }
   };
 
@@ -54,7 +82,12 @@ const Home = () => {
         {/* About Us Section */}
         <section className="about-us">
           <h2>Email AI</h2>
-          <p>
+          <p
+            className="type-writer"
+            style={{
+              color: "white",
+            }}
+          >
             <Typewriter
               options={{
                 strings: [
@@ -71,38 +104,40 @@ const Home = () => {
 
           {/* CSV Upload Section */}
           <div className="csv-upload">
-            <input
-              type="file"
-              accept=".csv"
-              onChange={handleFileUpload}
-              style={{ padding: "10px", margin: "20px 0" }}
-            />
+            <input type="file" accept=".csv" onChange={handleFileUpload} />
             <br />
             <button
               onClick={handleSubmit}
               disabled={!fileSelected} // Disable submit if no file is selected
-              style={{
-                padding: "10px 20px",
-                backgroundColor: "#28a745",
-                color: "white",
-                border: "none",
-                borderRadius: "4px",
-                cursor: fileSelected ? "pointer" : "not-allowed",
-              }}
+              className="submit-button"
             >
-              Submit
+              {loading ? (
+                <> <span >Submitting...</span> <span className="loading-spinner"></span> </>
+              ) : (
+                "Submit"
+              )}
             </button>
           </div>
         </section>
-
-        {/* Image Section */}
-        <div className="image-section">
-          <img src="src/assets/Email.png" alt="Email AI" />
-        </div>
+        <div className="bgimage"></div>
       </div>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <p>{modalMessage}</p>
+            <button
+              onClick={() => setShowModal(false)}
+              className="modal-close-button"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default Home;
-

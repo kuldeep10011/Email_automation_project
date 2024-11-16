@@ -8,6 +8,7 @@
     position: sticky;
     top: 0;
     z-index: 10;
+    height: 4vh;
 }
 
 .navbar-left {
@@ -23,7 +24,7 @@
 }
 
 .navbar-right button {
-    background-color: #28a745;
+    background-color: #FF834E;
     color: white;
     border: none;
     padding: 8px 16px;
@@ -39,8 +40,9 @@
 
 /* Main Content Section */
 .main-content {
+    overflow: hidden;
     display: flex;
-    height: calc(100vh - 60px);
+    height: 85vh;
     /* Full height minus navbar height */
     align-items: center;
     justify-content: space-between;
@@ -49,7 +51,7 @@
 
 /* About Us Section (Left Side) */
 .about-us {
-    flex: 1;
+    flex: .5;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -78,6 +80,7 @@
     align-items: flex-start;
 }
 
+
 .csv-upload input {
     border: 1px solid #ccc;
     padding: 10px;
@@ -89,7 +92,7 @@
 .submit-button {
     width: auto;
     padding: 10px 20px;
-    background-color: #28a745;
+    background-color: #218838;
     color: white;
     border: none;
     border-radius: 4px;
@@ -122,3 +125,63 @@
     object-fit: cover;
     border-radius: 10px;
 }
+
+/* Loading spinner */
+.loading-spinner {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Modal overlay */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Modal content */
+  .modal {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+
+  .type-writer{
+    height: 10vh;
+  }
+  .bgimage{
+    background: url("src/assets/bg.png");
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -10;
+  }
+
+  
