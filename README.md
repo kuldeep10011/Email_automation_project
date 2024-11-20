@@ -25,4 +25,20 @@
 ## 📂 File Structure:
 Frontend:
 - Email_Automation
+    - src
+        - assets: all the images upload here
+    - components
+         - Home.css
+         - Home.jsx
+         - RecentMail.css
+         - RecentMail.jsx
+   - App.css
+   - App.jsx
+   - main.jsx
+   - styles.css
+ 
+Backend:
+
+- venv
+- app.py
 
